@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 
-import { AppController } from "./App.Controller";
-import { AppService } from "./App.Service";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
 import { UsersModule } from "./users/users.module";
 import { DatabaseModule } from './database.module';
 import { PostsModule } from "./posts/posts.module";
