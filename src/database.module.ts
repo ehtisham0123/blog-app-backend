@@ -16,7 +16,3 @@ export class DatabaseModule {}
 
 // ehtishamjadoon1234
 // jKq62uFx2z7Am4ZB
-
-// mongodb+srv://ehtishamjadoon1234:<password>@cluster0.s4w6zqw.mongodb.net/?retryWrites=true&w=majority
-// mongodb+srv://ehtishamjadoon1234:<password>@cluster0.s4w6zqw.mongodb.net/test
-

@@ -9,7 +9,7 @@ async function bootstrap() {
 
   // Create Swagger options object
   const config = new DocumentBuilder()
-    .setTitle('Posts API')
+    .setTitle('Socail App API')
     .setDescription('API for creating, reading, updating, and deleting posts')
     .setVersion('1.0')
     .build();
@@ -28,7 +28,7 @@ async function bootstrap() {
 
   // Set up Swagger UI
   SwaggerModule.setup('api-docs', app, document, options);
-
+  
   await app.listen(3000);
 }
 bootstrap();
