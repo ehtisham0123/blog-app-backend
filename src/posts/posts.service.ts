@@ -11,23 +11,23 @@ export class PostsService {
 
   async create(createPostDto: CreatePostDto): Promise<Post> {
     const createdPost = new this.postModel(createPostDto);
-    return createdPost.save();
+    return await createdPost.save();
   }
 
   async findAll(): Promise<Post[]> {
-    return this.postModel.find().exec();
+    return await this.postModel.find().exec();
   }
 
   async findOne(id: string): Promise<Post> {
-    return this.postModel.findById(id).exec();
+    return await this.postModel.findById(id).exec();
   }
 
   async update(id: string, updatePostDto: UpdatePostDto): Promise<Post> {
     const existingPost = await this.postModel.findById(id).exec();
-    return Object.assign(existingPost, updatePostDto).save();
+    return await Object.assign(existingPost, updatePostDto).save();
   }
 
   async remove(id: string): Promise<Post> {
-    return this.postModel.findByIdAndDelete(id).exec();
+    return await this.postModel.findByIdAndDelete(id).exec();
   }
 }

@@ -17,19 +17,20 @@ export class UsersService {
     return await createdUser.save();
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() : Promise<User[]> {
+    return await this.userModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(email: string): Promise<User> {
+    return await this.userModel.findOne({ email }).exec();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    const existingUser = await this.userModel.findById(id).exec();
+    return await Object.assign(existingUser, updateUserDto).save();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string): Promise<User> {
+    return await this.userModel.findByIdAndDelete(id).exec();
   }
 }

@@ -23,20 +23,20 @@ let PostsService = class PostsService {
     }
     async create(createPostDto) {
         const createdPost = new this.postModel(createPostDto);
-        return createdPost.save();
+        return await createdPost.save();
     }
     async findAll() {
-        return this.postModel.find().exec();
+        return await this.postModel.find().exec();
     }
     async findOne(id) {
-        return this.postModel.findById(id).exec();
+        return await this.postModel.findById(id).exec();
     }
     async update(id, updatePostDto) {
         const existingPost = await this.postModel.findById(id).exec();
-        return Object.assign(existingPost, updatePostDto).save();
+        return await Object.assign(existingPost, updatePostDto).save();
     }
     async remove(id) {
-        return this.postModel.findByIdAndDelete(id).exec();
+        return await this.postModel.findByIdAndDelete(id).exec();
     }
 };
 PostsService = __decorate([

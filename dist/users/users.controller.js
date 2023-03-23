@@ -22,20 +22,20 @@ let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
-    async create(createUserDto) {
+    create(createUserDto) {
         return this.usersService.create(createUserDto);
     }
     findAll() {
         return this.usersService.findAll();
     }
-    findOne(id) {
-        return this.usersService.findOne(+id);
+    findOne(email) {
+        return this.usersService.findOne(email);
     }
     update(id, updateUserDto) {
-        return this.usersService.update(+id, updateUserDto);
+        return this.usersService.update(id, updateUserDto);
     }
     remove(id) {
-        return this.usersService.remove(+id);
+        return this.usersService.remove(id);
     }
 };
 __decorate([
@@ -53,7 +53,7 @@ __decorate([
 ], UsersController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('email')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)

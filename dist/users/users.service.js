@@ -25,17 +25,18 @@ let UsersService = class UsersService {
         const createdUser = new this.userModel(createUserDto);
         return await createdUser.save();
     }
-    findAll() {
-        return `This action returns all users`;
+    async findAll() {
+        return await this.userModel.find().exec();
     }
-    findOne(id) {
-        return `This action returns a #${id} user`;
+    async findOne(email) {
+        return await this.userModel.findOne({ email }).exec();
     }
-    update(id, updateUserDto) {
-        return `This action updates a #${id} user`;
+    async update(id, updateUserDto) {
+        const existingUser = await this.userModel.findById(id).exec();
+        return await Object.assign(existingUser, updateUserDto).save();
     }
-    remove(id) {
-        return `This action removes a #${id} user`;
+    async remove(id) {
+        return await this.userModel.findByIdAndDelete(id).exec();
     }
 };
 UsersService = __decorate([

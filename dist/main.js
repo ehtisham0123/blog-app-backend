@@ -4,7 +4,9 @@ const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const dotenv = require("dotenv");
 async function bootstrap() {
+    dotenv.config();
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalPipes(new common_1.ValidationPipe({ transform: true }));
     const config = new swagger_1.DocumentBuilder()
@@ -21,7 +23,7 @@ async function bootstrap() {
         },
     };
     swagger_1.SwaggerModule.setup('api-docs', app, document, options);
-    await app.listen(3000);
+    await app.listen(process.env.PORT);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
