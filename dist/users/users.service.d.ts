@@ -1,13 +1,16 @@
 import { Model } from 'mongoose';
 import { User, UserDocument } from './entities/user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { CreateUserInput } from './dto/create-user.input';
+import { UpdateUserInput } from './dto/update-user.input';
 export declare class UsersService {
-    private readonly userModel;
+    private userModel;
     constructor(userModel: Model<UserDocument>);
-    create(createUserDto: CreateUserDto): Promise<User>;
+    create(createUserInput: CreateUserInput): Promise<User>;
     findAll(): Promise<User[]>;
-    findOne(email: string): Promise<User>;
-    update(id: string, updateUserDto: UpdateUserDto): Promise<User>;
-    remove(id: string): Promise<User>;
+    findOne(id: number): Promise<User>;
+    update(id: number, updateUserInput: UpdateUserInput): Promise<User>;
+    remove(id: number): Promise<User>;
+    findOneByEmail(email: string): Promise<User>;
+    findOneByEmailAndPassword(email: string, password: string): Promise<User>;
+    updatePassword(id: number, newPassword: string): Promise<User>;
 }

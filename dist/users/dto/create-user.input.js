@@ -9,34 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserDto = void 0;
-const class_validator_1 = require("class-validator");
-const class_transformer_1 = require("class-transformer");
+exports.CreateUserInput = void 0;
+const graphql_1 = require("@nestjs/graphql");
 const swagger_1 = require("@nestjs/swagger");
-class CreateUserDto {
-}
+let CreateUserInput = class CreateUserInput {
+};
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: 'user@example.com',
-        description: 'The email address of the user',
-        required: true,
+        description: 'The user email address',
+        example: 'john.doe@example.com',
     }),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsEmail)(),
+    (0, graphql_1.Field)(() => String, { description: 'The user email address' }),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "email", void 0);
+], CreateUserInput.prototype, "email", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: 'P@ssword123',
-        description: 'The password of the user',
-        required: true,
+        description: 'The user password',
+        example: 'password123',
     }),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(8),
-    (0, class_transformer_1.Transform)(({ value }) => value.trim()),
+    (0, graphql_1.Field)(() => String, { description: 'The user password' }),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "password", void 0);
-exports.CreateUserDto = CreateUserDto;
-//# sourceMappingURL=create-user.dto.js.map
+], CreateUserInput.prototype, "password", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        description: 'Example field (placeholder)',
+        example: 123,
+    }),
+    (0, graphql_1.Field)(() => graphql_1.Int, { description: 'Example field (placeholder)' }),
+    __metadata("design:type", Number)
+], CreateUserInput.prototype, "exampleField", void 0);
+CreateUserInput = __decorate([
+    (0, graphql_1.InputType)()
+], CreateUserInput);
+exports.CreateUserInput = CreateUserInput;
+//# sourceMappingURL=create-user.input.js.map

@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  removeUser(id: Int!): User!
+}
+
+type Query {
+  user(id: Int!): User!
+  userByEmail(email: String!): User!
+  userByEmailAndPassword(email: String!, password: String!): User!
+  users: [User!]!
+}
+
+type User {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}

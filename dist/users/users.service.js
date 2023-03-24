@@ -21,22 +21,30 @@ let UsersService = class UsersService {
     constructor(userModel) {
         this.userModel = userModel;
     }
-    async create(createUserDto) {
-        const createdUser = new this.userModel(createUserDto);
-        return await createdUser.save();
+    async create(createUserInput) {
+        const createdUser = new this.userModel(createUserInput);
+        return createdUser.save();
     }
     async findAll() {
-        return await this.userModel.find().exec();
+        return this.userModel.find().exec();
     }
-    async findOne(email) {
-        return await this.userModel.findOne({ email }).exec();
+    async findOne(id) {
+        return this.userModel.findById(id).exec();
     }
-    async update(id, updateUserDto) {
-        const existingUser = await this.userModel.findById(id).exec();
-        return await Object.assign(existingUser, updateUserDto).save();
+    async update(id, updateUserInput) {
+        return this.userModel.findByIdAndUpdate(id, updateUserInput, { new: true }).exec();
     }
     async remove(id) {
-        return await this.userModel.findByIdAndDelete(id).exec();
+        return this.userModel.findByIdAndDelete(id).exec();
+    }
+    async findOneByEmail(email) {
+        return this.userModel.findOne({ email }).exec();
+    }
+    async findOneByEmailAndPassword(email, password) {
+        return this.userModel.findOne({ email, password }).exec();
+    }
+    async updatePassword(id, newPassword) {
+        return this.userModel.findByIdAndUpdate(id, { password: newPassword }, { new: true }).exec();
     }
 };
 UsersService = __decorate([

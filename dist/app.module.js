@@ -9,18 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const app_controller_1 = require("./app.controller");
+const App_Controller_1 = require("./App.Controller");
 const app_service_1 = require("./app.service");
-const users_module_1 = require("./users/users.module");
 const database_module_1 = require("./database.module");
 const posts_module_1 = require("./posts/posts.module");
-const auth_module_1 = require("./auth/auth.module");
+const users_module_1 = require("./users/users.module");
+const graphql_module_1 = require("./graphql.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot({ isGlobal: true }), database_module_1.DatabaseModule, users_module_1.UsersModule, posts_module_1.PostsModule, auth_module_1.AuthModule],
-        controllers: [app_controller_1.AppController],
+        imports: [config_1.ConfigModule.forRoot({ isGlobal: true }), graphql_module_1.GraphqLModule, database_module_1.DatabaseModule, posts_module_1.PostsModule, users_module_1.UsersModule],
+        controllers: [App_Controller_1.AppController],
         providers: [app_service_1.AppService]
     })
 ], AppModule);

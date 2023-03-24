@@ -11,17 +11,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSchema = exports.User = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-let User = class User {
+const graphql_1 = require("@nestjs/graphql");
+const mongoose_2 = require("mongoose");
+let User = class User extends mongoose_2.Document {
 };
 __decorate([
-    (0, mongoose_1.Prop)({ required: true, unique: true }),
+    (0, graphql_1.Field)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], User.prototype, "firstName", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], User.prototype, "lastName", void 0);
 User = __decorate([
+    (0, graphql_1.ObjectType)(),
     (0, mongoose_1.Schema)()
 ], User);
 exports.User = User;

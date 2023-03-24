@@ -24,9 +24,11 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from 'mongoose';
 export type UserDocument = User & Document;
-export declare class User {
+export declare class User extends Document {
     email: string;
     password: string;
+    firstName: string;
+    lastName: string;
 }
 export declare const UserSchema: import("mongoose").Schema<User, import("mongoose").Model<User, any, any, any, Document<unknown, any, User> & Omit<User & {
     _id: import("mongoose").Types.ObjectId;

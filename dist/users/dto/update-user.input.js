@@ -9,22 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
-const decorators_1 = require("@nestjs/common/decorators");
-const swagger_1 = require("@nestjs/swagger");
-const app_service_1 = require("./app.service");
-let AppController = class AppController {
-    constructor(AppService) {
-        this.AppService = AppService;
-    }
-    getHello() {
-        return this.AppService.getHello();
-    }
+exports.UpdateUserInput = void 0;
+const create_user_input_1 = require("./create-user.input");
+const graphql_1 = require("@nestjs/graphql");
+let UpdateUserInput = class UpdateUserInput extends (0, graphql_1.PartialType)(create_user_input_1.CreateUserInput) {
 };
-AppController = __decorate([
-    (0, swagger_1.ApiTags)(),
-    (0, decorators_1.Controller)(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
-], AppController);
-exports.AppController = AppController;
-//# sourceMappingURL=App.Controller.js.map
+__decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int),
+    __metadata("design:type", Number)
+], UpdateUserInput.prototype, "id", void 0);
+UpdateUserInput = __decorate([
+    (0, graphql_1.InputType)()
+], UpdateUserInput);
+exports.UpdateUserInput = UpdateUserInput;
+//# sourceMappingURL=update-user.input.js.map
