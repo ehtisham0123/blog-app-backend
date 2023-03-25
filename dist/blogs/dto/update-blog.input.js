@@ -9,20 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserInput = void 0;
+exports.UpdateBlogInput = void 0;
+const create_blog_input_1 = require("./create-blog.input");
 const graphql_1 = require("@nestjs/graphql");
-let CreateUserInput = class CreateUserInput {
+let UpdateBlogInput = class UpdateBlogInput extends (0, graphql_1.PartialType)(create_blog_input_1.CreateBlogInput) {
 };
 __decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateUserInput.prototype, "email", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateUserInput.prototype, "password", void 0);
-CreateUserInput = __decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int),
+    __metadata("design:type", Number)
+], UpdateBlogInput.prototype, "id", void 0);
+UpdateBlogInput = __decorate([
     (0, graphql_1.InputType)()
-], CreateUserInput);
-exports.CreateUserInput = CreateUserInput;
-//# sourceMappingURL=create-user.input.js.map
+], UpdateBlogInput);
+exports.UpdateBlogInput = UpdateBlogInput;
+//# sourceMappingURL=update-blog.input.js.map

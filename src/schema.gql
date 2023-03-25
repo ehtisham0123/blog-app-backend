@@ -2,20 +2,53 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Blog {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateBlogInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+}
+
 type Mutation {
+  createBlog(createBlogInput: CreateBlogInput!): Blog!
+  createUser(createUserInput: CreateUserInput!): User!
+  removeBlog(id: Int!): Blog!
   removeUser(id: Int!): User!
+  updateBlog(updateBlogInput: UpdateBlogInput!): Blog!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  updateUserPassword(id: Int!, newPassword: String!): User!
 }
 
 type Query {
+  blog(id: Int!): Blog!
+  blogs: [Blog!]!
   user(id: Int!): User!
   userByEmail(email: String!): User!
   userByEmailAndPassword(email: String!, password: String!): User!
   users: [User!]!
 }
 
+input UpdateBlogInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateUserInput {
+  email: String
+  id: String!
+  password: String
+}
+
 type User {
   email: String!
-  firstName: String!
-  lastName: String!
   password: String!
 }

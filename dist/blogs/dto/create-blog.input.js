@@ -9,20 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserInput = void 0;
+exports.CreateBlogInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
-let CreateUserInput = class CreateUserInput {
+let CreateBlogInput = class CreateBlogInput {
 };
 __decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateUserInput.prototype, "email", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateUserInput.prototype, "password", void 0);
-CreateUserInput = __decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int, { description: 'Example field (placeholder)' }),
+    __metadata("design:type", Number)
+], CreateBlogInput.prototype, "exampleField", void 0);
+CreateBlogInput = __decorate([
     (0, graphql_1.InputType)()
-], CreateUserInput);
-exports.CreateUserInput = CreateUserInput;
-//# sourceMappingURL=create-user.input.js.map
+], CreateBlogInput);
+exports.CreateBlogInput = CreateBlogInput;
+//# sourceMappingURL=create-blog.input.js.map

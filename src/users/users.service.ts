@@ -20,15 +20,15 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
-  async findOne(id: number): Promise<User> {
+  async findOne(id: string): Promise<User> {
     return this.userModel.findById(id).exec();
   }
 
-  async update(id: number, updateUserInput: UpdateUserInput): Promise<User> {
+  async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
     return this.userModel.findByIdAndUpdate(id, updateUserInput, { new: true }).exec();
   }
 
-  async remove(id: number): Promise<User> {
+  async remove(id: string): Promise<User> {
     return this.userModel.findByIdAndDelete(id).exec();
   }
 
@@ -40,7 +40,7 @@ export class UsersService {
     return this.userModel.findOne({ email, password }).exec();
   }
 
-  async updatePassword(id: number, newPassword: string): Promise<User> {
+  async updatePassword(id: string, newPassword: string): Promise<User> {
     return this.userModel.findByIdAndUpdate(id, { password: newPassword }, { new: true }).exec();
   }
 }

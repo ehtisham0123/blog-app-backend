@@ -15,11 +15,12 @@ const database_module_1 = require("./database.module");
 const posts_module_1 = require("./posts/posts.module");
 const users_module_1 = require("./users/users.module");
 const graphql_module_1 = require("./graphql.module");
+const blogs_module_1 = require("./blogs/blogs.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot({ isGlobal: true }), graphql_module_1.GraphqLModule, database_module_1.DatabaseModule, posts_module_1.PostsModule, users_module_1.UsersModule],
+        imports: [config_1.ConfigModule.forRoot({ isGlobal: true }), graphql_module_1.GraphqLModule, database_module_1.DatabaseModule, posts_module_1.PostsModule, users_module_1.UsersModule, blogs_module_1.BlogsModule],
         controllers: [App_Controller_1.AppController],
         providers: [app_service_1.AppService]
     })

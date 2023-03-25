@@ -3,6 +3,8 @@ import { AppModule } from "./app.module";
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
+import { UsersModule } from "./users/users.module";
+import { PostsModule } from "./posts/posts.module";
 
 async function bootstrap() {
     dotenv.config();
@@ -17,7 +19,9 @@ async function bootstrap() {
     .build();
 
   // Create Swagger document
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config,{
+    include: [UsersModule,PostsModule],
+  });
 
   // Set Swagger UI options
   const options = {
@@ -25,6 +29,7 @@ async function bootstrap() {
     swaggerOptions: {
       filter: true,
       displayRequestDuration: true,
+      
     },
   };
 

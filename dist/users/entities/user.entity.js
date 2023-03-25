@@ -25,16 +25,6 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "lastName", void 0);
 User = __decorate([
     (0, graphql_1.ObjectType)(),
     (0, mongoose_1.Schema)()

@@ -16,16 +16,24 @@ exports.UsersResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const users_service_1 = require("./users.service");
 const user_entity_1 = require("./entities/user.entity");
+const create_user_input_1 = require("./dto/create-user.input");
+const update_user_input_1 = require("./dto/update-user.input");
 const swagger_1 = require("@nestjs/swagger");
 let UsersResolver = class UsersResolver {
     constructor(usersService) {
         this.usersService = usersService;
+    }
+    async createUser(createUserInput) {
+        return this.usersService.create(createUserInput);
     }
     findAll() {
         return this.usersService.findAll();
     }
     findOne(id) {
         return this.usersService.findOne(id);
+    }
+    updateUser(updateUserInput) {
+        return this.usersService.update(updateUserInput.id, updateUserInput);
     }
     removeUser(id) {
         return this.usersService.remove(id);
@@ -36,7 +44,20 @@ let UsersResolver = class UsersResolver {
     findUserByEmailAndPassword(email, password) {
         return this.usersService.findOneByEmailAndPassword(email, password);
     }
+    updateUserPassword(id, newPassword) {
+        return this.usersService.updatePassword(id, newPassword);
+    }
 };
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Create a new user' }),
+    (0, swagger_1.ApiParam)({ name: 'id', type: 'string', description: 'User ID' }),
+    (0, swagger_1.ApiBody)({ type: create_user_input_1.CreateUserInput }),
+    (0, graphql_1.Mutation)(() => user_entity_1.User),
+    __param(0, (0, graphql_1.Args)('createUserInput')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_user_input_1.CreateUserInput]),
+    __metadata("design:returntype", Promise)
+], UsersResolver.prototype, "createUser", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Get all users' }),
     (0, graphql_1.Query)(() => [user_entity_1.User], { name: 'users' }),
@@ -49,15 +70,24 @@ __decorate([
     (0, graphql_1.Query)(() => user_entity_1.User, { name: 'user' }),
     __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.Int })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersResolver.prototype, "findOne", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Update a user by ID' }),
+    (0, swagger_1.ApiBody)({ type: update_user_input_1.UpdateUserInput }),
+    (0, graphql_1.Mutation)(() => user_entity_1.User),
+    __param(0, (0, graphql_1.Args)('updateUserInput')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [update_user_input_1.UpdateUserInput]),
+    __metadata("design:returntype", void 0)
+], UsersResolver.prototype, "updateUser", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Delete a user by ID' }),
     (0, graphql_1.Mutation)(() => user_entity_1.User),
     __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.Int })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersResolver.prototype, "removeUser", null);
 __decorate([
@@ -77,6 +107,15 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], UsersResolver.prototype, "findUserByEmailAndPassword", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Update a user password by ID' }),
+    (0, graphql_1.Mutation)(() => user_entity_1.User),
+    __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.Int })),
+    __param(1, (0, graphql_1.Args)('newPassword')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", void 0)
+], UsersResolver.prototype, "updateUserPassword", null);
 UsersResolver = __decorate([
     (0, swagger_1.ApiTags)('users'),
     (0, graphql_1.Resolver)(() => user_entity_1.User),
